@@ -47,7 +47,7 @@ class App extends React.Component {
 
   lightFilter = () => {
     let filtered = this.state.characters.filter(
-      (character) => character.alignment == "Light"
+      (character) => character.alignment === "Light"
     );
     this.setState({
       filtered: filtered,
@@ -56,7 +56,7 @@ class App extends React.Component {
 
   darkFilter = () => {
     let filtered = this.state.characters.filter(
-      (character) => character.alignment == "Darkness"
+      (character) => character.alignment === "Darkness"
     );
     this.setState({
       filtered: filtered,
@@ -122,7 +122,6 @@ class App extends React.Component {
         <div className="banner">
           <h1>The Third Keyblade War</h1>
           <section className="buttons">
-            <button onClick={this.addAction}>Add Character</button>
           </section>
         </div>
         <div className="body">
@@ -141,6 +140,7 @@ class App extends React.Component {
           <Filters
             lightFilter={this.lightFilter}
             darkFilter={this.darkFilter}
+            addAction={this.addAction}
           />
           {this.state.filtered.length > 0 ? (
             <CharacterContainer
@@ -160,8 +160,6 @@ class App extends React.Component {
           <Favorites
             favorites={favorites}
             clickAction={this.removeFromFavorites}
-            editAction={this.editAction}
-            deleteAction={this.deleteAction}
           />
         </div>
       </div>

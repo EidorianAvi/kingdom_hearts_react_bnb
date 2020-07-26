@@ -156,10 +156,20 @@ table {
   background: black;
 }
 
-.banner button {
+.filter-bar button {
   font-size: 16px;
   border: none;
   background: none;
+}
+
+.add-button {
+  position: fixed;
+  bottom: 2rem;
+  left: 1rem;
+  background: none;
+  border: none; 
+  color: lightgrey;
+  font-size: 20px;
 }
 
 .buttons {
@@ -193,6 +203,11 @@ table {
   /* opacity: .9; */
   border-radius: 10px;
   box-shadow: 5px 5px 5px grey;
+}
+
+.character-form label {
+  font-size: 12px;
+
 }
 
 .character-form input {
