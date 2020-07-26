@@ -1,0 +1,182 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* END OF MEYERS RESET  */
+
+* {
+  box-sizing: border-box;
+}
+
+.App {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  height: 7vh;
+  background: lightgrey;
+  margin-bottom: ;
+  /* border-bottom: 2px solid goldenrod; */
+}
+
+.banner h1 {
+  font-size: 32px;
+}
+.body {
+  padding-top: 1rem;
+  background: url('https://wallpaper-house.com/data/out/10/wallpaper2you_446405.jpg');
+}
+
+.banner button {
+  font-size: 16px;
+  border: none;
+  background: none;
+}
+
+.buttons { 
+  display: flex; 
+  width: 50%;
+  justify-content: space-around;
+}
+
+.character-form {
+  color: white;
+  position: absolute;
+  z-index: 9;
+  opacity: .9;
+  top: 15rem;
+  left: 37rem;
+  height: 50vh;
+  width: 20vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  border: 2px solid goldenrod;
+  background: rgb(2,0,36);
+  background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 31%, rgb(24, 24, 228) 88%);
+  /* opacity: .9; */
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px grey;
+}
+
+.character-form input {
+  background: white;
+  margin: .5rem;
+  padding: 5px;
+  border: none;
+  border-radius: 4px;
+}
+
+.character-form form {
+  text-align: center;
+}
+
+.favorite-characters {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.character-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.character-card {
+  color: white;
+  height: 60vh;
+  width: 20vw;
+  margin: 10px;
+  background-color: rgb(255,255,255,.3);
+  text-align: center;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+  border-radius: 20px;
+  box-shadow: 0px 4px 10px white;
+}
+
+.character-card h3 {
+  font-size: 24px;
+}
+
+.character-card img {
+  height: 25vh;
+  width: 10vw;
+  margin-left: 4.5rem;
+  cursor: pointer;
+}
+/* 
+.character-card img:hover {
+  cursor: pointer;
+} */
+
+.info-section {
+  border: 2px solid goldenrod;
+  border-radius: 0 0 10px 10px;
+  background-color: goldenrod;
+  box-shadow: 0px -6px 8px grey;
+}
+
+.info-section button {
+  width: 4rem;
+  background-color: lightgrey;
+  border: none;
+  font-size: 15px;
+  margin: .75rem;
+  padding: 3px;
+  border-radius: 5px;
+  box-shadow: 3px 3px 2px grey;
+}
+
+.info-section button:hover{
+  cursor: pointer;
+}
