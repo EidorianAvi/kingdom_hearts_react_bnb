@@ -3,16 +3,19 @@ import React from "react";
 import CharacterContainer from "./components/CharacterContainer";
 import CharacterForm from "./components/CharacterForm";
 import Favorites from "./components/Favorites";
-import EditForm from './components/EditForm';
+import EditForm from "./components/EditForm";
+import Filters from "./components/Filters";
 
 const charactersUrl = "http://localhost:4000/characters";
 class App extends React.Component {
   state = {
     characters: [],
     favorites: [],
+    filtered: [],
     homePage: true,
     editPage: false,
-    addPage: false
+    addPage: false,
+    editID: 0,
   };
 
   componentDidMount = () => {
@@ -42,10 +45,28 @@ class App extends React.Component {
     });
   };
 
+  lightFilter = () => {
+    let filtered = this.state.characters.filter(
+      (character) => character.alignment == "Light"
+    );
+    this.setState({
+      filtered: filtered,
+    });
+  };
+
+  darkFilter = () => {
+    let filtered = this.state.characters.filter(
+      (character) => character.alignment == "Darkness"
+    );
+    this.setState({
+      filtered: filtered,
+    });
+  };
+
   addToFavorites = (character) => {
     if (
       !this.state.favorites.find((favorite) => favorite.id === character.id) &&
-      this.state.favorites.length < 3
+      this.state.favorites.length < 1
     ) {
       this.setState({
         favorites: [...this.state.favorites, character],
@@ -60,27 +81,29 @@ class App extends React.Component {
     this.setState({ favorites });
   };
 
-  editAction = () => {
+  editAction = (props) => {
     this.setState({
-      editPage: !this.state.editPage
-    })
+      editPage: !this.state.editPage,
+      editID: props.id,
+    });
   };
 
   addAction = (event) => {
     this.setState({
       editPage: false,
-      addPage: !this.state.addPage
-    })
-  }
+      addPage: !this.state.addPage,
+    });
+  };
 
   editCharacter = (character) => {
-    fetch(`${charactersUrl}/${character.id}`, {
+    fetch(`${charactersUrl}/${this.state.editID}`, {
       method: "PUT",
       headers: {
-        "Content-Type" : "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(character)
+      body: JSON.stringify(character),
     });
+    window.location.reload(true);
   };
 
   deleteAction = (id) => {
@@ -98,33 +121,50 @@ class App extends React.Component {
       <div className="App">
         <div className="banner">
           <h1>The Third Keyblade War</h1>
-          <section className='buttons'>
+          <section className="buttons">
             <button onClick={this.addAction}>Add Character</button>
-            <button>Filter</button>
           </section>
         </div>
         <div className="body">
-          {this.state.addPage ?
-          <CharacterForm addCharacter={this.addCharacter} />
-          : null}
-          {this.state.editPage ? 
-          <EditForm editCharacter={this.editCharacter} />
-          : null } 
+          {this.state.addPage ? (
+            <CharacterForm
+              addCharacter={this.addCharacter}
+              addAction={this.addAction}
+            />
+          ) : null}
+          {this.state.editPage ? (
+            <EditForm
+              editCharacter={this.editCharacter}
+              editAction={this.editAction}
+            />
+          ) : null}
+          <Filters
+            lightFilter={this.lightFilter}
+            darkFilter={this.darkFilter}
+          />
+          {this.state.filtered.length > 0 ? (
+            <CharacterContainer
+              characters={this.state.filtered}
+              clickAction={this.addToFavorites}
+              editAction={this.editAction}
+              deleteAction={this.deleteAction}
+            />
+          ) : (
+            <CharacterContainer
+              characters={characters}
+              clickAction={this.addToFavorites}
+              editAction={this.editAction}
+              deleteAction={this.deleteAction}
+            />
+          )}
           <Favorites
             favorites={favorites}
             clickAction={this.removeFromFavorites}
             editAction={this.editAction}
             deleteAction={this.deleteAction}
           />
-          <CharacterContainer
-            characters={characters}
-            clickAction={this.addToFavorites}
-            editAction={this.editAction}
-            deleteAction={this.deleteAction}
-          />
         </div>
       </div>
-
     );
   }
 }

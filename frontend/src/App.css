@@ -1,45 +1,126 @@
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
 }
 body {
-	line-height: 1;
+  line-height: 1;
 }
-ol, ul {
-	list-style: none;
+ol,
+ul {
+  list-style: none;
 }
-blockquote, q {
-	quotes: none;
+blockquote,
+q {
+  quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 /* END OF MEYERS RESET  */
@@ -62,16 +143,17 @@ table {
   width: 100%;
   height: 7vh;
   background: lightgrey;
-  margin-bottom: ;
   /* border-bottom: 2px solid goldenrod; */
 }
 
 .banner h1 {
   font-size: 32px;
 }
+
 .body {
-  padding-top: 1rem;
-  background: url('https://wallpaper-house.com/data/out/10/wallpaper2you_446405.jpg');
+  display: grid;
+  grid-template-columns: 0.6fr 3fr 1fr;
+  background: black;
 }
 
 .banner button {
@@ -80,17 +162,18 @@ table {
   background: none;
 }
 
-.buttons { 
-  display: flex; 
+.buttons {
+  display: flex;
   width: 50%;
-  justify-content: space-around;
+  justify-content: flex-end;
 }
 
 .character-form {
+  font-size: 32px;
   color: white;
-  position: absolute;
+  position: fixed;
   z-index: 9;
-  opacity: .9;
+  opacity: 0.9;
   top: 15rem;
   left: 37rem;
   height: 50vh;
@@ -100,8 +183,13 @@ table {
   justify-content: space-evenly;
   align-items: center;
   border: 2px solid goldenrod;
-  background: rgb(2,0,36);
-  background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 31%, rgb(24, 24, 228) 88%);
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    0deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 31%,
+    rgb(24, 24, 228) 88%
+  );
   /* opacity: .9; */
   border-radius: 10px;
   box-shadow: 5px 5px 5px grey;
@@ -109,7 +197,7 @@ table {
 
 .character-form input {
   background: white;
-  margin: .5rem;
+  margin: 0.5rem;
   padding: 5px;
   border: none;
   border-radius: 4px;
@@ -119,15 +207,73 @@ table {
   text-align: center;
 }
 
+.exit-button {
+  border: none;
+  background: none;
+  font-size: 26px;
+  color: goldenrod;
+  width: 90%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
 .favorite-characters {
+  background: grey;
+  position: fixed;
+  top: 7rem;
+  padding: 1.3rem;
+  right: 1em;
+  /* background: grey; */
+  color: black;
+  font-size: 28px;
   display: flex;
   flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+  width: 18vw;
+  border-radius: 10px;
+}
+
+.favorite-characters h2 {
+  text-decoration: underline;
+  text-align: center;
+}
+
+.favorite-character img {
+  width: 14vw;
+  cursor: pointer;
+}
+
+.filter-bar {
+  /* background: black; */
+  position: fixed;
+  top: 6rem;
+  left: 1rem;
+  height: 32vh;
+  color: lightgrey;
+  font-size: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+
+.filter-bar button {
+  border: none;
+  background: none;
+  color: lightgrey;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 .character-container {
+  background: url("https://wallpaper-house.com/data/out/10/wallpaper2you_446405.jpg");
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  padding-top: 1rem;
 }
 
 .character-card {
@@ -135,7 +281,7 @@ table {
   height: 60vh;
   width: 20vw;
   margin: 10px;
-  background-color: rgb(255,255,255,.3);
+  background-color: rgb(255, 255, 255, 0.3);
   text-align: center;
   display: flex;
   flex-flow: column wrap;
@@ -149,15 +295,13 @@ table {
 }
 
 .character-card img {
-  height: 25vh;
-  width: 10vw;
+  max-height: 60%;
+  max-width: 60%;
+  width: auto;
+  /* height: auto; */
   margin-left: 4.5rem;
   cursor: pointer;
 }
-/* 
-.character-card img:hover {
-  cursor: pointer;
-} */
 
 .info-section {
   border: 2px solid goldenrod;
@@ -171,12 +315,12 @@ table {
   background-color: lightgrey;
   border: none;
   font-size: 15px;
-  margin: .75rem;
+  margin: 0.75rem;
   padding: 3px;
   border-radius: 5px;
   box-shadow: 3px 3px 2px grey;
 }
 
-.info-section button:hover{
+.info-section button:hover {
   cursor: pointer;
 }

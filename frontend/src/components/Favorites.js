@@ -1,25 +1,23 @@
 import React from "react";
-import Character from "./Character";
+import Favorite from "./Favorite";
 
-const Favorites = ({ favorites, clickAction, deleteAction, editAction }) => {
+const Favorites = ({ favorites, clickAction }) => {
   const renderCharacters = () => {
     return favorites.map((favorite) => (
-      <Character
+      <Favorite
         key={favorite.id}
         character={favorite}
         clickAction={clickAction}
-        deleteAction={deleteAction}
-        editAction={editAction}
       />
     ));
   };
 
-  return favorites.length > 0 ? (
+  return (
     <div className="favorite-characters">
-      <h2>Favorite Three</h2>
+      <h2>Favorite Character</h2>
       {renderCharacters()}
     </div>
-  ) : null;
+  );
 };
 
 export default Favorites;

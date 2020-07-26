@@ -5,7 +5,6 @@ const initialState = {
     image: "",
     first_appearance: "",
     alignment: "",
-    id: 0,
 };
 
 class EditForm extends Component {
@@ -19,18 +18,20 @@ class EditForm extends Component {
 
     handleChange = (event) => {
         let { name, value } = event.target
+        console.log(event.target)
         this.setState({
             [name]: value,
         });
     };
     
-
+    
     render() {
         const { name, image, first_appearance, alignment } = this.state;
-
+        
         return (
             <div className="character-form">
-                <h2>Edit Character</h2>
+                <button className="exit-button" onClick={this.props.editAction}>x</button>   
+                <h2>Edit</h2>
                 <form onSubmit={this.handleSubmit}>
                     <input
                         type="text"

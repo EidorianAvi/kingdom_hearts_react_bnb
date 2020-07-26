@@ -28,6 +28,7 @@ class CharacterForm extends Component {
 
     return (
       <div className="character-form">
+        <button className="exit-button" onClick={this.props.addAction}>x</button> 
         <h2>Add Character</h2>
         <form onSubmit={this.handleSubmit}>
           <input
